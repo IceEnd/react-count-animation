@@ -5,8 +5,8 @@ import CountUp from './component/CountUp';
 import CountRoll from './component/CountRoll';
 
 const settings = {
-  start: 10,
-  count: 90999921.23,
+  start: 99923,
+  count: 0,
   duration: 3000,
   decimals: 4,
   separator: true,

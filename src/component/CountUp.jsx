@@ -22,8 +22,8 @@ export default class AnimationCount extends Component {
   componentDidMount() {
     this.timer = setInterval(() => {
       const t = new Date().getTime() - this.state.startTime;
-      const b = parseFloat(this.props.start).toFixed(this.props.decimals);
-      const c = this.props.count.toFixed(this.props.decimals);
+      const b = this.props.start;
+      const c = this.props.count - this.props.start;
       const d = this.props.duration;
       let result;
       if (t < this.props.duration) {
@@ -46,7 +46,7 @@ export default class AnimationCount extends Component {
     if (this.props.useGroup && this.props.decimals >= 1) {
       let array1 = str.split('.')[0].split('').reverse().join('');
       const array2 = str.split('.')[1];
-      array1 = array1.replace(/(\d{3})/g, '$1,');
+      array1 = array1.replace(/(\d{3})(?=[^$])/g, '$1,');
       array1 = array1.split('').reverse().join('');
       str = `${array1}.${array2}`;
     }

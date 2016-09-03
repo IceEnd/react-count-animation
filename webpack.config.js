@@ -13,13 +13,16 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
   ],
   module: {
     loaders: [
       {
         text: /.jsx$/,
-        loaders: ['babel']
+        loaders: ['babel'],
+        exclude: /node_modules/,
+        include: __dirname,
       },
       {
         test: /.js$/,
