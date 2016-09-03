@@ -1,0 +1,46 @@
+{
+  "name": "react-count-animation",
+  "version": "0.0.1",
+  "description": "A animation react component for count change",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "webpack-dev-server --port 3000 --hot --colors --progress --inline --publicPath / --content-base src/"
+  },
+  "keywords": [
+    "Count",
+    "Animation"
+  ],
+  "author": "Cononico",
+  "license": "MIT",
+  "dependencies": {
+    "babel-polyfill": "^6.3.14",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.3.15",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-stage-2": "^6.5.0",
+    "babel-register": "^6.3.13",
+    "css-loader": "0.24.0",
+    "eslint": "^3.3.1",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.2.1",
+    "eslint-plugin-react": "^6.2.0",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssshrink": "^0.1.6",
+    "gulp-rev": "7.1.2",
+    "gulp-rev-collector": "^1.0.5",
+    "gulp-uglify": "^2.0.0",
+    "gulp-webpack": "1.5.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
+  }
+}
