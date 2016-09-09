@@ -20,6 +20,25 @@ export default class AnimationCount extends Component {
   }
 
   componentDidMount() {
+    this.setTimer();
+  }
+
+  componentWillReceiveProps() {
+    this.setState({
+      value: this.formatNumber(this.props.start),
+      startTime: new Date().getTime(),
+    });
+    this.clearTimer();
+    this.setTimer();
+  }
+  componentWillUnmount() {
+    this.clearTimer();
+  }
+
+  setTimer() {
+    if (this.timer) {
+      return;
+    }
     this.timer = setInterval(() => {
       const t = new Date().getTime() - this.state.startTime;
       const b = this.props.start;
@@ -34,6 +53,10 @@ export default class AnimationCount extends Component {
       }
       this.setState({ value: result });
     }, 10);
+  }
+  clearTimer() {
+    clearInterval(this.timer);
+    this.timer = null;
   }
 
   countUp(t, b, c, d) {

@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, ol, li{
+    list-style:none;
+}
+.title{
+    text-align: center;
+}
+.exam-div{
+    padding: 20px 0;
+    text-align: center;
+    color: cornflowerblue;
+    font-size: 30px;
+}
+.count-roll-div{
+    display: inline-block;
+}
+.count-roll-ul {
+    overflow: hidden;
+}
+.count-roll-li{
+    display: inline-block;
+    float: left;
+}
