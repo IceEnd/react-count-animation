@@ -3,6 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import CountUp from './component/CountUp';
 import CountRoll from './component/CountRoll';
+import AnimationCount from './AnimationCount';
 
 import './style/main.css';
 
@@ -13,24 +14,26 @@ const settings = {
   decimals: 4,
   separator: true,
   useGroup: true,
+  animation: 'up',
 }
 const settings2 = {
-  start: 0,
+  start: 1,
   count: 9999999,
-  duration: 3000,
+  duration: 1000,
   decimals: 2,
   separator: true,
   useGroup: true,
+  animation: 'roll',
 }
 render(
   <div>
     <h1 className="title">Count Animation</h1>
     <div className="exam-div">
-      <CountUp {...settings}/>
+      <AnimationCount {...settings}/>
     </div>
     <h1 className="title">Count Roll</h1>
     <div className="exam-div">
-      <CountRoll {...settings2}/>
+      <AnimationCount {...settings2}/>
     </div>
   </div>,
   document.getElementById('root')
