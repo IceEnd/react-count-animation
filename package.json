@@ -4,7 +4,8 @@
   "description": "A animation react component for count change",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack-dev-server --port 3000 --colors --progress --inline --publicPath / --content-base src/"
+    "start": "webpack-dev-server --port 3000 --colors --progress --inline --publicPath / --content-base src/",
+    "lint": "concurrently \"eslint /src/ test\""
   },
   "keywords": [
     "Count",
@@ -29,6 +30,7 @@
     "babel-preset-stage-2": "^6.5.0",
     "babel-register": "^6.3.13",
     "css-loader": "^0.24.0",
+    "concurrently": "^2.2.0",
     "eslint": "^3.3.1",
     "eslint-config-airbnb": "^10.0.1",
     "eslint-plugin-import": "^1.14.0",
