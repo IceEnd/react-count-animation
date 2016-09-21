@@ -4,10 +4,10 @@ const webpack = require('webpack');
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
-    path.join(__dirname, './test/home.js'),
+    path.join(__dirname, './index.js'),
   ],
   output: {
-    path: path.join(__dirname, './dist/'),
+    path: path.join(__dirname),
     filename: 'bundle.js',
     publicPath: '/static/',
   },

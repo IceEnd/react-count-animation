@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import CountUp from './component/CountUp';
 import CountRoll from './component/CountRoll';
 
+import '../style/main.css';
 
 export default class AnimationCount extends Component {
   static displayName = 'AnimationCount';

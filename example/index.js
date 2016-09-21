@@ -1,11 +1,7 @@
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
-import CountUp from './component/CountUp';
-import CountRoll from './component/CountRoll';
-import AnimationCount from './AnimationCount';
-
-import './style/main.css';
+import AnimationCount from 'react-count-animation';
 
 const settings = {
   start: 99923,
