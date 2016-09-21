@@ -1,6 +1,6 @@
 {
   "name": "react-count-animation",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A animation react component for count change",
   "main": "src/index.js",
   "scripts": {
@@ -13,6 +13,10 @@
   ],
   "author": "Cononico",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IceEnd/react-count-animation"
+  },
   "dependencies": {
     "babel-polyfill": "^6.3.14",
     "lodash": "^4.15.0",
