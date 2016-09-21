@@ -14,7 +14,7 @@ npm install react-count-animation@latest
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
-import AnimationCount from '../lib/index';
+import AnimationCount from 'react-count-animation';
 
 const settings = {
   start: 99923,
