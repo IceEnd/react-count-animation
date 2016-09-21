@@ -19,6 +19,7 @@ export default class CountRoll extends Component {
       height: 'auto',
       animationStyle: this.setAnimationStyle(0, false),
       arryLi: [],
+      updateState: false,
     };
   }
 
@@ -29,6 +30,16 @@ export default class CountRoll extends Component {
     const maxHeight = this.elementLi.offsetHeight;
     this.setInit(maxHeight);
     this.startRoll();
+  }
+  componentWillReceiveProps() {
+    this.setState({ updateState: true });
+    this.getAllCount();
+  }
+  componentDidUpdate() {
+    if (this.state.updateState) {
+      this.setInit(this.state.height);
+      this.startRoll();
+    }
   }
 
   /* 计算数值 */
