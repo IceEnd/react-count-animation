@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import CountUp from './component/CountUp';
 import CountRoll from './component/CountRoll';
+import CountSlide from './component/CountSlide';
 
 import '../style/main.css';
 
@@ -30,6 +31,8 @@ export default class AnimationCount extends Component {
         return (<CountUp {...setting} />);
       case 'roll':
         return (<CountRoll {...setting} />);
+      case 'slide':
+        return (<CountSlide {...setting} />);
       default:
         return null;
     }

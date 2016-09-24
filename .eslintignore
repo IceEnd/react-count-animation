@@ -1,5 +1,5 @@
 dist/
 lib/
-test/home.js
+test/home.jsx
 gulpfile.js
 webpack.config.js

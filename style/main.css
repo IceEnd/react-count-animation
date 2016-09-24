@@ -14,7 +14,7 @@ ul, ol, li{
     color: cornflowerblue;
     font-size: 30px;
 }
-.count-roll-div{
+.count-roll-main, .count-slide-main{
     display: inline-block;
     overflow: hidden;
 }
@@ -34,4 +34,11 @@ ul, ol, li{
     color: #ffffff;
     padding: 10px 20px;
     border-radius: 5px;
+}
+.count-slide-ul{
+    overflow: hidden;
+}
+.count-slide-li{
+    float: left;
+    display: inline-block;
 }

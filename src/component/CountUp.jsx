@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import formatNumber from '../mod/Util';
 
 export default class AnimationCount extends Component {
   static displayName = 'AnimationCount';
@@ -14,7 +15,7 @@ export default class AnimationCount extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: this.formatNumber(this.props.start),
+      value: formatNumber(this.props.start, this.props.decimals, this.props.useGroup),
       startTime: new Date().getTime(),
     };
   }
@@ -48,7 +49,7 @@ export default class AnimationCount extends Component {
       if (t < this.props.duration) {
         result = this.countUp(t, b, c, d);
       } else {
-        result = this.formatNumber(this.props.count);
+        result = formatNumber(this.props.count, this.props.decimals, this.props.useGroup);
         clearInterval(this.timer);
       }
       this.setState({ value: result });
@@ -61,19 +62,8 @@ export default class AnimationCount extends Component {
 
   countUp(t, b, c, d) {
     let result = parseFloat(((c * (-Math.pow(2, (-10 * t) / d) + 1) * 1024) / 1023) + b);
-    result = this.formatNumber(result);
+    result = formatNumber(result, this.props.decimals, this.props.useGroup);
     return result;
-  }
-  formatNumber(number) {
-    let str = parseFloat(number).toFixed(this.props.decimals);
-    if (this.props.useGroup && this.props.decimals >= 1) {
-      let array1 = str.split('.')[0].split('').reverse().join('');
-      const array2 = str.split('.')[1];
-      array1 = array1.replace(/(\d{3})(?=[^$])/g, '$1,');
-      array1 = array1.split('').reverse().join('');
-      str = `${array1}.${array2}`;
-    }
-    return str;
   }
 
   render() {

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import formatNumber from '../mod/Util';
 
 export default class CountRoll extends Component {
   static displayName = 'CountRoll';
@@ -13,12 +14,10 @@ export default class CountRoll extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      valueStart: this.formatNumber(this.props.start),
-      end: this.formatNumber(this.props.count),
-      startTime: new Date().getTime(),
+      valueStart: formatNumber(this.props.start, this.props.decimals, this.props.useGroup),
       height: 'auto',
       animationStyle: this.setAnimationStyle(0, false),
-      arryLi: [],
+      arrayLi: [],
       updateState: false,
     };
   }
@@ -56,11 +55,11 @@ export default class CountRoll extends Component {
       if (t < this.props.duration) {
         result = this.countUp(t, b, c, d);
       } else {
-        result = this.formatNumber(this.props.count);
+        result = formatNumber(this.props.count, this.props.decimals, this.props.useGroup);
       }
       arr.unshift(result);
     }
-    this.setState({ arryLi: arr });
+    this.setState({ arrayLi: arr });
   }
 
   /* 初始化 */
@@ -119,26 +118,24 @@ export default class CountRoll extends Component {
   }
   render() {
     return (
-      <div className="count-roll-main">
-        <div
-          className="count-roll-div"
-          style={{ height: this.state.height }}
+      <div
+        className="count-roll-main"
+        style={{ height: this.state.height }}
+      >
+        <ul
+          className="count-roll-ul"
+          style={{ ...this.state.animationStyle }}
         >
-          <ul
-            className="count-roll-ul"
-            style={{ ...this.state.animationStyle }}
+          {this.state.arrayLi.map((value, index) =>
+            (<li key={index}>{value}</li>)
+          )}
+          <li
+            className="count-roll-li"
+            ref={(li) => { this.elementLi = li; }}
           >
-            {this.state.arryLi.map((value, index) =>
-              (<li key={index}>{value}</li>)
-            )}
-            <li
-              className="count-roll-li"
-              ref={(li) => { this.elementLi = li; }}
-            >
-              {this.state.valueStart}
-            </li>
-          </ul>
-        </div>
+            {this.state.valueStart}
+          </li>
+        </ul>
       </div>
     );
   }

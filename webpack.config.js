@@ -4,10 +4,12 @@ const webpack = require('webpack');
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server',
     path.join(__dirname, './test/home.js'),
   ],
   output: {
-    path: path.join(__dirname, './dist/'),
+    path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/static/',
   },
@@ -16,6 +18,9 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
+  devServer: {
+    hot: true,
+  },
   module: {
     loaders: [
       {

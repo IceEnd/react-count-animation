@@ -4,7 +4,7 @@
   "description": "A animation react component for count change",
   "main": "./lib/index.js",
   "scripts": {
-    "start": "webpack-dev-server --port 3000 --colors --progress --inline --publicPath / --content-base test/",
+    "start": "concurrently --raw --kill-others \"webpack-dev-server --port 3000 --colors --progress --inline  --no-info --publicPath test/ --content-base test/\"",
     "lint": "concurrently \"eslint /src/ test\"",
     "prepublish": "babel ./src --out-dir ./lib",
     "webpack": "webpack"
