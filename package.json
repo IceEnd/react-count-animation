@@ -1,6 +1,6 @@
 {
   "name": "react-count-animation",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A animation react component for count change",
   "main": "./lib/index.js",
   "scripts": {
@@ -35,6 +35,7 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-2": "^6.5.0",
     "babel-register": "^6.3.13",
+    "babel-plugin-transform-object-assign": "^6.3.13",
     "css-loader": "^0.24.0",
     "concurrently": "^2.2.0",
     "eslint": "^3.3.1",
