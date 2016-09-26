@@ -28,7 +28,7 @@ export default class CountRoll extends Component {
   componentDidMount() {
     const maxHeight = this.elementLi.offsetHeight;
     this.setInit(maxHeight);
-    this.startRoll();
+    this.startAnimation();
   }
   componentWillReceiveProps() {
     this.setState({ updateState: true });
@@ -37,7 +37,7 @@ export default class CountRoll extends Component {
   componentDidUpdate() {
     if (this.state.updateState) {
       this.setInit(this.state.height);
-      this.startRoll();
+      this.startAnimation();
     }
   }
 
@@ -73,7 +73,7 @@ export default class CountRoll extends Component {
   /* 设置Style */
   setAnimationStyle(height, reset) {
     return {
-      transitionDuration: reset ? '0s' : `${this.props.duration / 1000}`,
+      transitionDuration: reset ? '0s' : `${this.props.duration / 1000}s`,
       WebkitTransitionDuration: reset ? '0s' : `${this.props.duration / 1000}s`,
       MozAnimationDirection: reset ? '0s' : `${this.props.duration / 1000}s`,
       OTransitionDuration: reset ? '0s' : `${this.props.duration / 1000}s`,
@@ -85,15 +85,15 @@ export default class CountRoll extends Component {
   }
 
   /* 开始动画 */
-  startRoll() {
+  startAnimation() {
     setTimeout(() => {
       this.setState({ animationStyle: this.setAnimationStyle(0, false) });
     }, 200);
   }
   /* 重新开始 */
-  restartRoll() {
+  restartAnimation() {
     this.setState({ animationStyle: this.setAnimationStyle(this.state.height * 19, true) });
-    this.startRoll();
+    this.startAnimation();
   }
 
   /**

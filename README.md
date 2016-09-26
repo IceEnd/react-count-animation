@@ -2,7 +2,7 @@
 Using TWEEN algorithm, digital animation based on react.
 
 ## Display
-![display](http://obukb5fdy.bkt.clouddn.com/reactcountanimation.gif)
+![display](http://obukb5fdy.bkt.clouddn.com/countanimation.gif)
 
 ## Install
 ```markdown

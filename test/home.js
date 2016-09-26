@@ -7,14 +7,14 @@ const settings = {
   start: 99923,
   count: 9999999,
   duration: 2000,
-  decimals: 4,
+  decimals: 3,
   useGroup: true,
   animation: 'up',
 };
 const settings2 = {
   start: 1,
   count: 9999999,
-  duration: 1000,
+  duration: 2000,
   decimals: 2,
   useGroup: true,
   animation: 'roll',
@@ -22,7 +22,7 @@ const settings2 = {
 const settings3 = {
   start: 1,
   count: 9999999,
-  duration: 2000,
+  duration: 3000,
   decimals: 2,
   useGroup: true,
   animation: 'slide',
