@@ -3,3 +3,4 @@ lib/
 test/home.js
 gulpfile.js
 webpack.config.js
+example/index.js
