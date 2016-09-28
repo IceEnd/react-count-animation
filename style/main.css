@@ -56,48 +56,27 @@ ul, ol, li{
     -ms-animation: tremble 0.15s ease-in-out;
 }
 @keyframes tremble{
-    /*0% {transform: rotate(0deg);}*/
-    /*20% {transform: rotate(10deg);}*/
-    /*40% {transform: rotate(-10deg);}*/
-    /*60% {transform: rotate(5deg);}*/
-    /*80% {transform: rotate(-5deg);}*/
-    /*100% {transform: rotate(0deg);}*/
     0% {transform: rotate(0deg);}
     40% {transform: rotate(-30deg);}
     100% {transform: rotate(0deg);}
 }
 @-webkit-keyframes tremble{
-    /*0% {-webkit-transform: rotate(0deg);}*/
-    /*20% {-webkit-transform: rotate(10deg);}*/
-    /*40% {-webkit-transform: rotate(-10deg);}*/
-    /*60% {-webkit-transform: rotate(5deg);}*/
-    /*80% {-webkit-transform: rotate(-5deg);}*/
-    /*100% {-webkit-transform: rotate(0deg);}*/
     0% {-webkit-transform: rotate(0deg);}
     40% {-webkit-transform: rotate(-30deg);}
     100% {-webkit-transform: rotate(0deg);}
 }
 @-moz-keyframes tremble{
     0% {-moz-transform: rotate(0deg);}
-    20% {-moz-transform: rotate(10deg);}
-    40% {-moz-transform: rotate(-10deg);}
-    60% {-moz-transform: rotate(5deg);}
-    80% {-moz-transform: rotate(-5deg);}
+    40% {-moz-transform: rotate(-30deg);}
     100% {-moz-transform: rotate(0deg);}
 }
 @-ms-keyframes tremble{
-    0% {-ms-transform: rotate(0deg); }
-    20% {-ms-transform: rotate(10deg); }
-    40% {-ms-transform: rotate(-10deg); }
-    60% {-ms-transform: rotate(5deg);}
-    80% {-ms-transform: rotate(-5deg);}
+    0% {-ms-transform: rotate(0deg);}
+    40% {-ms-transform: rotate(-30deg);}
     100% {-ms-transform: rotate(0deg);}
 }
 @-o-keyframes tremble{
     0% {-o-transform: rotate(0deg);}
-    20% {-o-transform: rotate(10deg);}
-    40% {-o-transform: rotate(-10deg);}
-    60% {-o-transform: rotate(5deg);}
-    80% {-o-transform: rotate(-5deg);}
+    40% {-o-transform: rotate(-30deg);}
     100% {-o-transform: rotate(0deg);}
 }
