@@ -76,11 +76,16 @@ export default class CountSlide extends Component {
   setInit(arrayLi) {
     let width = 0;
     const position = [];
-    const arrayClass = []
-    arrayLi.forEach((li) => {
-      position.push(width);
+    const arrayClass = [];
+    arrayLi.forEach((li, index) => {
       arrayClass.push(false);
-      width += li.offsetWidth;
+      if (index === 0) {
+        position.push(li.offsetWidth / 2);
+        width += (li.offsetWidth * 3) / 2;
+      } else {
+        position.push(width);
+        width += li.offsetWidth;
+      }
     });
     this.setState({
       ulStyle: {

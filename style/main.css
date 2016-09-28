@@ -49,11 +49,11 @@ ul, ol, li{
     -o-transition-timing-function: cubic-bezier(0.8, 0, 1.0, 1.0); /* Opera */
 }
 .count-slide-li-tremble{
-    animation: tremble 0.1s ease-in-out;
-    -webkit-animation: tremble 0.1s ease-in-out;
-    -moz-animation: tremble 0.1s ease-in-out;
-    -o-animation: tremble 0.1s ease-in-out;
-    -ms-animation: tremble 0.1s ease-in-out;
+    animation: tremble 0.15s ease-in-out;
+    -webkit-animation: tremble 0.15s ease-in-out;
+    -moz-animation: tremble 0.15s ease-in-out;
+    -o-animation: tremble 0.15s ease-in-out;
+    -ms-animation: tremble 0.15s ease-in-out;
 }
 @keyframes tremble{
     /*0% {transform: rotate(0deg);}*/

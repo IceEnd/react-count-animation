@@ -11,7 +11,6 @@ npm install react-count-animation@latest
 
 ## How to use
 ```js
-import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import AnimationCount from 'react-count-animation';
