@@ -55,7 +55,7 @@ count               | Number             | target value
 duration           | Number             | Animation time length, in milliseconds
 decimals          | Number             | decimals
 useGroup         | bool                  |  Whether to use ',' the number of segments
-animation         | string                |  Animation effects: <br> 'up' => 'CountUp';<br>'roll' => 'CountRoll'<br>'roll' => 'CountRoll'
+animation         | string                |  Animation effects: <br> 'up' => 'CountUp';<br>'roll' => 'CountRoll'<br>'slide' => 'CountSlide'
 
 ## License
 
