@@ -1,6 +1,7 @@
 # react-count-animation
 
 [![npm](https://img.shields.io/badge/npm-v1.1.0-brightgreen.svg)](https://www.npmjs.com/package/react-count-animation)
+[![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/IceEnd/icePlayer/blob/master/LICENSE)
 
 Using TWEEN algorithm, digital animation based on react.
 
@@ -17,7 +18,7 @@ npm install react-count-animation@latest
 add stylesheet:
 
 ```html
-<link rel='stylesheet href="http://about.coolecho.net/common/count.min.css" />
+<link rel="stylesheet" href="http://about.coolecho.net/common/count.min.css" />
 ```
 
 ```js
@@ -42,6 +43,14 @@ const Count = () => {
     useGroup: true,
     animation: 'roll',
   };
+  const settings3 = {
+    start: 1,
+    count: 9999999,
+    duration: 3000,
+    decimals: 2,
+    useGroup: true,
+    animation: 'slide',
+  };
   return (
     <div>
       <h1 className="title">Count Animation</h1>
@@ -51,6 +60,10 @@ const Count = () => {
       <h1 className="title">Count Roll</h1>
       <div className="exam-div">
         <AnimationCount {...settings2}/>
+      </div>
+      <h1 className="title">Count Slide</h1>
+      <div className="exam-div">
+        <AnimationCount {...settings3} />
       </div>
     </div>
   );
