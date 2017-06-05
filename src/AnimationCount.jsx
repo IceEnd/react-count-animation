@@ -3,8 +3,6 @@ import CountUp from './component/CountUp';
 import CountRoll from './component/CountRoll';
 import CountSlide from './component/CountSlide';
 
-import '../style/main.css';
-
 export default class AnimationCount extends Component {
   static displayName = 'AnimationCount';
 

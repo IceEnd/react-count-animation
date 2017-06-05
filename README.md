@@ -1,4 +1,7 @@
 # react-count-animation
+
+[![npm](https://img.shields.io/badge/npm-v1.1.0-brightgreen.svg)](https://www.npmjs.com/package/react-count-animation)
+
 Using TWEEN algorithm, digital animation based on react.
 
 ## Display
@@ -10,40 +13,50 @@ npm install react-count-animation@latest
 ```
 
 ## How to use
+
+add stylesheet:
+
+```html
+<link rel='stylesheet href="http://about.coolecho.net/common/count.min.css" />
+```
+
 ```js
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import AnimationCount from 'react-count-animation';
 
-const settings = {
-  start: 99923,
-  count: 9999999,
-  duration: 3000,
-  decimals: 4,
-  useGroup: true,
-  animation: 'up',
-}
-const settings2 = {
-  start: 1,
-  count: 9999999,
-  duration: 1000,
-  decimals: 2,
-  useGroup: true,
-  animation: 'roll',
-}
-render(
-  <div>
-    <h1 className="title">Count Animation</h1>
-    <div className="exam-div">
-      <AnimationCount {...settings}/>
+const Count = () => {
+  const settings = {
+    start: 99923,
+    count: 9999999,
+    duration: 3000,
+    decimals: 4,
+    useGroup: true,
+    animation: 'up',
+  };
+  const settings2 = {
+    start: 1,
+    count: 9999999,
+    duration: 1000,
+    decimals: 2,
+    useGroup: true,
+    animation: 'roll',
+  };
+  return (
+    <div>
+      <h1 className="title">Count Animation</h1>
+      <div className="exam-div">
+        <AnimationCount {...settings}/>
+      </div>
+      <h1 className="title">Count Roll</h1>
+      <div className="exam-div">
+        <AnimationCount {...settings2}/>
+      </div>
     </div>
-    <h1 className="title">Count Roll</h1>
-    <div className="exam-div">
-      <AnimationCount {...settings2}/>
-    </div>
-  </div>,
-  document.getElementById('root')
-);
+  );
+}
+
+export default Count;
 ```
 
 ## Options

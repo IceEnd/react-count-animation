@@ -61,7 +61,7 @@ export default class AnimationCount extends Component {
   }
 
   countUp(t, b, c, d) {
-    let result = parseFloat(((c * (-Math.pow(2, (-10 * t) / d) + 1) * 1024) / 1023) + b);
+    let result = parseFloat(((c * (-(2 ** ((-10 * t) / d)) + 1) * 1024) / 1023) + b);
     result = formatNumber(result, this.props.decimals, this.props.useGroup);
     return result;
   }

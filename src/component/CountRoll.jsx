@@ -50,7 +50,7 @@ export default class CountRoll extends Component {
     const b = this.props.start;
     const d = this.props.duration;
     const temp = d / 19;
-    for (let i = 0; i < 19; i++) {
+    for (let i = 0; i < 19; i += 1) {
       t += temp;
       if (t < this.props.duration) {
         result = this.countUp(t, b, c, d);
@@ -101,7 +101,7 @@ export default class CountRoll extends Component {
    */
   countUp(t, b, c, d) {
     const temp = ((t / d) - 1);
-    const result = (c * (Math.pow(temp, 5) + 1)) + b;
+    const result = (c * ((temp ** 5) + 1)) + b;
     return this.formatNumber(result);
   }
 
@@ -126,8 +126,8 @@ export default class CountRoll extends Component {
           className="count-roll-ul"
           style={{ ...this.state.animationStyle }}
         >
-          {this.state.arrayLi.map((value, index) =>
-            (<li key={index}>{value}</li>)
+          {this.state.arrayLi.map(value =>
+            (<li>{value}</li>),
           )}
           <li
             className="count-roll-li"

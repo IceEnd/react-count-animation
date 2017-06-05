@@ -129,7 +129,7 @@ export default class CountSlide extends Component {
         this.clearTimer();
       } else {
         this.setLiStyle(index, interval);
-        index++;
+        index += 1;
       }
     }, interval);
   }
@@ -149,12 +149,11 @@ export default class CountSlide extends Component {
               className={
                 `count-slide-li ${this.state.listClass[index] ? 'count-slide-li-tremble' : ''}`
               }
-              key={index}
               style={{ ...this.state.listStyle[index] }}
               ref={(li) => { this.arrayLi.push(li); }}
             >
               {value}
-            </li>)
+            </li>),
           )}
         </ul>
       </div>

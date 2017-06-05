@@ -1,13 +1,13 @@
 {
   "name": "react-count-animation",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "A animation react component for count change",
   "main": "./lib/index.js",
   "scripts": {
-    "start": "concurrently --raw --kill-others \"webpack-dev-server --port 3000 --colors --progress --inline  --no-info --publicPath test/ --content-base test/\"",
-    "lint": "concurrently \"eslint /src/ test\"",
-    "prepublish": "babel ./src --out-dir ./lib",
-    "webpack": "webpack"
+    "start": "webpack-dev-server --colors --progress --inline --no-info",
+    "lint": "eslint src",
+    "prepublish": "cross-env NODE_ENV=production gulp && babel ./src --out-dir ./lib",
+    "build": "babel "
   },
   "keywords": [
     "Count",
@@ -20,8 +20,6 @@
     "url": "https://github.com/IceEnd/react-count-animation"
   },
   "dependencies": {
-    "babel-polyfill": "^6.3.14",
-    "lodash": "^4.15.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
   },
@@ -36,22 +34,24 @@
     "babel-preset-stage-2": "^6.5.0",
     "babel-register": "^6.3.13",
     "babel-plugin-transform-object-assign": "^6.3.13",
+    "babel-polyfill": "^6.3.14",
     "css-loader": "^0.24.0",
     "concurrently": "^2.2.0",
-    "eslint": "^3.3.1",
-    "eslint-config-airbnb": "^10.0.1",
-    "eslint-plugin-import": "^1.14.0",
-    "eslint-plugin-jsx-a11y": "^2.2.1",
-    "eslint-plugin-react": "^6.2.0",
-    "gulp-clean": "^0.3.2",
-    "gulp-concat": "^2.6.0",
-    "gulp-cssshrink": "^0.1.6",
-    "gulp-rev": "^7.1.2",
-    "gulp-rev-collector": "^1.0.5",
-    "gulp-uglify": "^2.0.0",
+    "cross-env": "^3.1.3",
+    "del": "2.2.2",
+    "eslint": "^3.14.0",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.0.3",
+    "gulp-rename": "1.2.2",
+    "gulp-util": "^3.0.8",
     "gulp-webpack": "^1.5.0",
+    "react-hot-loader": "^3.0.0-beta.6",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.15.1"
+    "webpack": "^2.2.0-rc.2",
+    "webpack-dev-server": "^2.2.0-rc.0"
   }
 }
