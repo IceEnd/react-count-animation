@@ -4,9 +4,9 @@ import webpack from 'webpack';
 export default {
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    path.join(__dirname, './test/home.js'),
+    // 'webpack-dev-server/client?http://localhost:3000',
+    // 'webpack/hot/only-dev-server',
+    path.join(__dirname, './test/index.js'),
   ],
   output: {
     path: path.join(__dirname, 'dist/static/'),
@@ -44,14 +44,8 @@ export default {
   module: {
     rules: [
       {
-        test: /.jsx$/,
-        use: ['babel-loader'],
-        exclude: /node_modules/,
-        include: __dirname,
-      },
-      {
-        test: /.js$/,
-        loaders: ['babel-loader'],
+        test: /\.(js|jsx)$/,
+        use: ['react-hot-loader/webpack', 'babel-loader'],
         exclude: /node_modules/,
         include: __dirname,
       },

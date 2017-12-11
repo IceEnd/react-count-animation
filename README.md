@@ -1,6 +1,6 @@
 # react-count-animation
 
-[![npm](https://img.shields.io/badge/npm-v1.1.0-brightgreen.svg)](https://www.npmjs.com/package/react-count-animation)
+[![npm](https://img.shields.io/badge/npm-v1.1.2-brightgreen.svg)](https://www.npmjs.com/package/react-count-animation)
 [![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/IceEnd/icePlayer/blob/master/LICENSE)
 
 Using TWEEN algorithm, digital animation based on react.
@@ -15,10 +15,16 @@ npm install react-count-animation@latest
 
 ## How to use
 
-add stylesheet:
+import stylesheet:
 
 ```html
 <link rel="stylesheet" href="http://about.coolecho.net/common/count.min.css" />
+```
+
+or
+
+```js
+import 'react-count-animation/dist/count.min.css';
 ```
 
 ```js

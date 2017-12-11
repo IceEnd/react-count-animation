@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import formatNumber from '../mod/Util';
+import { formatNumber, equalObject } from '../mod/util';
 
 export default class CountRoll extends Component {
   static displayName = 'CountRoll';
@@ -18,31 +18,42 @@ export default class CountRoll extends Component {
       height: 'auto',
       animationStyle: this.setAnimationStyle(0, false),
       arrayLi: [],
-      updateState: false,
     };
   }
 
   componentWillMount() {
     this.getAllCount();
   }
+
   componentDidMount() {
     const maxHeight = this.elementLi.offsetHeight;
-    this.setInit(maxHeight);
+    const { start, decimals, useGroup } = this.props;
+    this.setInit(maxHeight, start, decimals, useGroup);
     this.startAnimation();
   }
-  componentWillReceiveProps() {
-    this.setState({ updateState: true });
-    this.getAllCount();
-  }
-  componentDidUpdate() {
-    if (this.state.updateState) {
-      this.setInit(this.state.height);
+
+  shouldComponentUpdate(nextProps, nextState) {
+    const propsUpdate = !equalObject(this.props, nextProps);
+    const stateUpdate = !equalObject(this.state, nextState);
+    if (propsUpdate) {
+      const { start, decimals, useGroup } = nextProps;
+      this.setInit(this.state.height, start, decimals, useGroup);
+      this.getAllCount();
       this.startAnimation();
+      return true;
     }
+    if (stateUpdate) {
+      return true;
+    }
+    return false;
+  }
+
+  componentWillUnmout() {
+    clearTimeout(this.timer);
   }
 
   /* 计算数值 */
-  getAllCount() {
+  getAllCount = () => {
     let t = 0;
     let result;
     const arr = [];
@@ -63,15 +74,16 @@ export default class CountRoll extends Component {
   }
 
   /* 初始化 */
-  setInit(maxHeight) {
+  setInit = (maxHeight, start, decimals, useGroup) => {
     this.setState({
       height: maxHeight,
       animationStyle: this.setAnimationStyle(maxHeight * 19, true),
+      valueStart: formatNumber(start, decimals, useGroup),
     });
   }
 
   /* 设置Style */
-  setAnimationStyle(height, reset) {
+  setAnimationStyle = (height, reset) => {
     return {
       transitionDuration: reset ? '0s' : `${this.props.duration / 1000}s`,
       WebkitTransitionDuration: reset ? '0s' : `${this.props.duration / 1000}s`,
@@ -85,13 +97,17 @@ export default class CountRoll extends Component {
   }
 
   /* 开始动画 */
-  startAnimation() {
-    setTimeout(() => {
+  startAnimation = () => {
+    if (this.timer) {
+      clearTimeout(this.timer);
+      this.timer = null;
+    }
+    this.timer = setTimeout(() => {
       this.setState({ animationStyle: this.setAnimationStyle(0, false) });
     }, 200);
   }
   /* 重新开始 */
-  restartAnimation() {
+  restartAnimation = () => {
     this.setState({ animationStyle: this.setAnimationStyle(this.state.height * 19, true) });
     this.startAnimation();
   }
@@ -99,23 +115,13 @@ export default class CountRoll extends Component {
   /**
    * tween Qunit easeOut
    */
-  countUp(t, b, c, d) {
+  countUp = (t, b, c, d) => {
+    const {decimals, useGroup } = this.props; 
     const temp = ((t / d) - 1);
     const result = (c * ((temp ** 5) + 1)) + b;
-    return this.formatNumber(result);
+    return formatNumber(result, decimals, useGroup);
   }
 
-  formatNumber(number) {
-    let str = parseFloat(number).toFixed(this.props.decimals);
-    if (this.props.useGroup && this.props.decimals >= 1) {
-      let array1 = str.split('.')[0].split('').reverse().join('');
-      const array2 = str.split('.')[1];
-      array1 = array1.replace(/(\d{3})(?=[^$])/g, '$1,');
-      array1 = array1.split('').reverse().join('');
-      str = `${array1}.${array2}`;
-    }
-    return str;
-  }
   render() {
     return (
       <div

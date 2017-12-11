@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import formatNumber from '../mod/Util';
+import { formatNumber, equalObject } from '../mod/util';
 
 export default class CountSlide extends Component {
   static displayName = 'CountSlide';
@@ -15,7 +15,7 @@ export default class CountSlide extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      arryLi: formatNumber(this.props.count, this.props.decimals, this.props.useGroup).split(''),
+      arrayLi: formatNumber(this.props.count, this.props.decimals, this.props.useGroup).split(''),
       ulStyle: {
         width: 'auto',
         height: 'auto',
@@ -27,10 +27,11 @@ export default class CountSlide extends Component {
       updateState: false,
     };
   }
+
   componentWillMount() {
     const style = [];
     let li = {};
-    this.state.arryLi.forEach(() => {
+    this.state.arrayLi.forEach(() => {
       li = {
         left: '100%',
       };
@@ -42,28 +43,38 @@ export default class CountSlide extends Component {
   }
 
   componentDidMount() {
-    this.setInit(this.arrayLi);
+    this.setInit();
     this.startAnimation();
   }
 
-  componentWillReceiveProps() {
-    this.clearTimer();
-    this.setState({ updateState: true });
-    const style = [];
-    let li = {};
-    this.state.arryLi.forEach(() => {
-      li = {
-        left: '100%',
-      };
-      style.push(li);
-    });
-    this.setState({
-      listStyle: style,
-    });
+  // componentWillReceiveProps() {
+  // }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    const propsUpdate = !equalObject(this.props, nextProps);
+    if (propsUpdate) {
+      this.elLi = [];
+      this.clearTimer();
+      const style = [];
+      let li = {};
+      this.state.arrayLi.forEach(() => {
+        li = {
+          left: '100%',
+        };
+        style.push(li);
+      });
+      this.setState({
+        arrayLi: formatNumber(nextProps.count, nextProps.decimals, nextProps.useGroup).split(''),
+        updateState: true,
+        listStyle: style,
+      });
+    }
+    return true;
   }
+
   componentDidUpdate() {
     if (this.state.updateState) {
-      this.setInit(this.arrayLi);
+      this.setInit();
       this.startAnimation();
     }
   }
@@ -73,11 +84,11 @@ export default class CountSlide extends Component {
   }
 
   /* 初始化 */
-  setInit(arrayLi) {
+  setInit = () => {
     let width = 0;
     const position = [];
     const arrayClass = [];
-    arrayLi.forEach((li, index) => {
+    this.elLi.forEach((li, index) => {
       arrayClass.push(false);
       if (index === 0) {
         position.push(li.offsetWidth / 2);
@@ -90,15 +101,16 @@ export default class CountSlide extends Component {
     this.setState({
       ulStyle: {
         width: `${width}px`,
-        height: `${arrayLi[0].offsetHeight}px`,
+        height: `${this.elLi[0].offsetHeight}px`,
       },
       listPosition: position,
       listClass: arrayClass,
+      updateState: false,
     });
   }
 
   /* 设置每个li的样式 */
-  setLiStyle(index, interval) {
+  setLiStyle = (index, interval) => {
     const arrStyle = this.state.listStyle;
     const arrClass = this.state.listClass;
     arrStyle[index] = {
@@ -108,7 +120,7 @@ export default class CountSlide extends Component {
       OTransitionDuration: `${interval / 1000}s`,
       left: `${this.state.listPosition[index]}px`,
     };
-    if (index > 1 && index <= this.state.arryLi.length) {
+    if (index > 1 && index <= this.state.arrayLi.length) {
       arrClass[index - 2] = true;
     }
     this.setState({
@@ -117,14 +129,14 @@ export default class CountSlide extends Component {
     });
   }
 
-  startAnimation() {
-    const interval = this.props.duration / this.state.arryLi.length;
+  startAnimation = () => {
+    const interval = this.props.duration / this.state.arrayLi.length;
     let index = 0;
     if (this.timer) {
       return;
     }
     this.timer = setInterval(() => {
-      if (index === this.state.arryLi.length) {
+      if (index === this.state.arrayLi.length) {
         this.setLiStyle(index, interval);
         this.clearTimer();
       } else {
@@ -134,23 +146,23 @@ export default class CountSlide extends Component {
     }, interval);
   }
 
-  clearTimer() {
+  clearTimer = () => {
     clearInterval(this.timer);
     this.timer = null;
   }
 
   render() {
-    this.arrayLi = [];
+    this.elLi = [];
     return (
       <div className="count-slide-main">
         <ul className="count-slide-ul" style={{ ...this.state.ulStyle }}>
-          {this.state.arryLi.map((value, index) =>
+          {this.state.arrayLi.map((value, index) =>
             (<li
               className={
                 `count-slide-li ${this.state.listClass[index] ? 'count-slide-li-tremble' : ''}`
               }
               style={{ ...this.state.listStyle[index] }}
-              ref={(li) => { this.arrayLi.push(li); }}
+              ref={node => (this.elLi.push(node))}
             >
               {value}
             </li>),

@@ -1,12 +1,8 @@
 env:
-  node: true
+  browser: true
 parser: 'babel-eslint'
-extends: airbnb
+extends: alchemy
 plugins:
   - react
   - jsx-a11y
   - import
-rules:
-  "import/no-extraneous-dependencies": ["error", { "devDependencies": ["webpack.config.*.js", "gulpfile.babel.js"] }]
-  "react/require-default-props": 0
-  "react/no-unused-prop-types": 0

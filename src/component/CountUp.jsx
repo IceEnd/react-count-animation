@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import formatNumber from '../mod/Util';
+import { formatNumber, equalObject } from '../mod/util';
 
 export default class AnimationCount extends Component {
   static displayName = 'AnimationCount';
@@ -24,19 +24,29 @@ export default class AnimationCount extends Component {
     this.setTimer();
   }
 
-  componentWillReceiveProps() {
-    this.setState({
-      value: this.formatNumber(this.props.start),
-      startTime: new Date().getTime(),
-    });
-    this.clearTimer();
-    this.setTimer();
+  shouldComponentUpdate(nextProps, nextState) {
+    const propsFlag = !equalObject(this.props, nextProps);
+    if (propsFlag) {
+      this.setState({
+        value: formatNumber(this.props.start),
+        startTime: new Date().getTime(),
+      });
+      this.clearTimer();
+      this.setTimer();
+      return true;
+    }
+    const stateFlag = !equalObject(this.state, nextState);
+    if (stateFlag) {
+      return true;
+    }
+    return false;
   }
+
   componentWillUnmount() {
     this.clearTimer();
   }
 
-  setTimer() {
+  setTimer = () => {
     if (this.timer) {
       return;
     }
@@ -55,12 +65,13 @@ export default class AnimationCount extends Component {
       this.setState({ value: result });
     }, 10);
   }
-  clearTimer() {
+
+  clearTimer = () => {
     clearInterval(this.timer);
     this.timer = null;
   }
 
-  countUp(t, b, c, d) {
+  countUp = (t, b, c, d) => {
     let result = parseFloat(((c * (-(2 ** ((-10 * t) / d)) + 1) * 1024) / 1023) + b);
     result = formatNumber(result, this.props.decimals, this.props.useGroup);
     return result;
