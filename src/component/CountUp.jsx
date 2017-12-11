@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { formatNumber, equalObject } from '../mod/util';
+import { formatNumber, equalObject } from '../mod/utils';
 
 export default class AnimationCount extends Component {
   static displayName = 'AnimationCount';

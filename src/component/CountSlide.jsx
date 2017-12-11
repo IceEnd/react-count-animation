@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import { formatNumber, equalObject } from '../mod/util';
+import { formatNumber, equalObject } from '../mod/utils';
 
 export default class CountSlide extends Component {
   static displayName = 'CountSlide';
 
   static propTypes = {
-    start: PropTypes.number,
+    // start: PropTypes.number,
     count: PropTypes.number,
     duration: PropTypes.number,
     decimals: PropTypes.number,
@@ -26,6 +26,7 @@ export default class CountSlide extends Component {
       listClass: [],
       updateState: false,
     };
+    this.elLi = [];
   }
 
   componentWillMount() {
@@ -47,10 +48,7 @@ export default class CountSlide extends Component {
     this.startAnimation();
   }
 
-  // componentWillReceiveProps() {
-  // }
-
-  shouldComponentUpdate(nextProps, nextState) {
+  componentWillReceiveProps(nextProps) {
     const propsUpdate = !equalObject(this.props, nextProps);
     if (propsUpdate) {
       this.elLi = [];
@@ -69,8 +67,10 @@ export default class CountSlide extends Component {
         listStyle: style,
       });
     }
-    return true;
   }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  // }
 
   componentDidUpdate() {
     if (this.state.updateState) {
@@ -88,20 +88,22 @@ export default class CountSlide extends Component {
     let width = 0;
     const position = [];
     const arrayClass = [];
-    this.elLi.forEach((li, index) => {
+    const listEl = this.ul.children;
+    for (let i = 0, len = listEl.length; i < len; i++) {
       arrayClass.push(false);
-      if (index === 0) {
+      const li = listEl[i];
+      if (i === 0) {
         position.push(li.offsetWidth / 2);
         width += (li.offsetWidth * 3) / 2;
       } else {
         position.push(width);
         width += li.offsetWidth;
       }
-    });
+    }
     this.setState({
       ulStyle: {
         width: `${width}px`,
-        height: `${this.elLi[0].offsetHeight}px`,
+        height: `${listEl[0].offsetHeight}px`,
       },
       listPosition: position,
       listClass: arrayClass,
@@ -152,17 +154,19 @@ export default class CountSlide extends Component {
   }
 
   render() {
-    this.elLi = [];
     return (
       <div className="count-slide-main">
-        <ul className="count-slide-ul" style={{ ...this.state.ulStyle }}>
+        <ul
+          className="count-slide-ul"
+          style={{ ...this.state.ulStyle }}
+          ref={node => (this.ul = node)}
+        >
           {this.state.arrayLi.map((value, index) =>
             (<li
               className={
                 `count-slide-li ${this.state.listClass[index] ? 'count-slide-li-tremble' : ''}`
               }
               style={{ ...this.state.listStyle[index] }}
-              ref={node => (this.elLi.push(node))}
             >
               {value}
             </li>),

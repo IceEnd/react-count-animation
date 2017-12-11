@@ -17,12 +17,6 @@ npm install react-count-animation@latest
 
 import stylesheet:
 
-```html
-<link rel="stylesheet" href="http://about.coolecho.net/common/count.min.css" />
-```
-
-or
-
 ```js
 import 'react-count-animation/dist/count.min.css';
 ```

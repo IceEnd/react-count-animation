@@ -62,9 +62,9 @@ export default class Home extends Component {
         <div className="exam-div">
           <AnimationCount {...settings[2]} />
         </div>
-        <h1 onClick={() => this.handleClick(0)}>click1</h1>
-        <h1 onClick={() => this.handleClick(1)}>click2</h1>
-        <h1 onClick={() => this.handleClick(2)}>click3</h1>
+        <a onClick={() => this.handleClick(0)}>click1</a>
+        <a onClick={() => this.handleClick(1)}>click2</a>
+        <a onClick={() => this.handleClick(2)}>click3</a>
       </div>
     );
   }
