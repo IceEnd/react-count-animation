@@ -10,7 +10,7 @@ export default class Home extends Component {
       settings: [
         {
           start: 99923,
-          count: 9999999,
+          count: -100000,
           duration: 2000,
           decimals: 0,
           useGroup: true,
@@ -18,7 +18,7 @@ export default class Home extends Component {
         },
         {
           start: 1,
-          count: 9999999,
+          count: -9999999,
           duration: 2000,
           decimals: 2,
           useGroup: true,
@@ -26,7 +26,7 @@ export default class Home extends Component {
         },
         {
           start: 1,
-          count: 9999999,
+          count: -100000,
           duration: 3000,
           decimals: 1,
           useGroup: true,

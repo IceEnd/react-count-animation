@@ -1,6 +1,9 @@
 export function formatNumber(number, decimals, useGroup) {
   let str = parseFloat(number).toFixed(decimals);
   if (useGroup) {
+    if (number < 0) { // 数字小于0
+      str = str.substring(1, str.length);
+    }
     let array1 = str.split('.')[0].split('').reverse().join('');
     array1 = array1.replace(/(\d{3})(?=[^$])/g, '$1,');
     array1 = array1.split('').reverse().join('');
@@ -10,6 +13,9 @@ export function formatNumber(number, decimals, useGroup) {
       str = `${array1}.${array2}`;
     } else {
       str = array1;
+    }
+    if (number < 0) {
+      str = `-${str}`;
     }
   }
   return str;
